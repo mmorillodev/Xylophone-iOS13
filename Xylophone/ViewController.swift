@@ -19,7 +19,13 @@ class ViewController: UIViewController {
 
 
     @IBAction func keyPressed(_ sender: UIButton) {
+        sender.layer.opacity = 0.5
+        
         playSound(soundType: sender.titleLabel?.text ?? "C")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            sender.layer.opacity = 1
+        })
     }
     
     func playSound(soundType: String) {
